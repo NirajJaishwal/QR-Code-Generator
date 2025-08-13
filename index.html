@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>QR Code Generator — Styled & Padded</title>
+  <link rel="stylesheet" href="./style/style.css" />
+</head>
+<body>
+    <div class="wrap">
+      <header>
+        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+    <rect width="24" height="24" rx="6" fill="#c5f1ab" />
+    <text 
+      x="50%" 
+      y="50%" 
+      dominant-baseline="middle" 
+      text-anchor="middle" 
+      font-size="10" 
+      fill="white" 
+      font-family="Arial, sans-serif"
+      font-weight="bold"
+    >
+      QR
+    </text>
+    </svg>
+      <div>
+        <h1>QR Code Generator — Styled & Padded</h1>
+        <div style="color: var(--muted); font-size: 0.9rem">
+          Create and download QR codes with custom padding and styles.
+        </div>
+      </div>
+    </header>
+
+    <div class="card">
+      <label for="data">Enter link or text</label>
+      <div class="controls">
+        <input
+          id="data"
+          type="text"
+          placeholder="https://example.com or any text"
+          value=""
+        />
+        <div style="display: flex; flex-direction: column; gap: 0.5rem">
+          <label style="font-size: 0.8rem; color: var(--muted)">QR size (square)</label>
+          <select id="size">
+            <option value="128">128 × 128</option>
+            <option value="200" selected>200 × 200</option>
+            <option value="300">300 × 300</option>
+            <option value="400">400 × 400</option>
+            <option value="500">500 × 500</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 1rem; gap: 1rem; align-items: flex-end">
+        <div style="flex: 1; min-width: 150px;">
+          <label for="ec">Error correction</label>
+          <select id="ec">
+            <option value="L">L — Low (7%)</option>
+            <option value="M">M — Medium (15%)</option>
+            <option value="Q">Q — Quartile (25%)</option>
+            <option value="H" selected>H — High (30%)</option>
+          </select>
+        </div>
+
+        <div style="min-width: 150px;">
+          <label>QR style</label>
+          <select id="style">
+            <option value="classic" selected>Classic Squares</option>
+            <option value="dots">Dots</option>
+            <option value="rounded">Rounded</option>
+          </select>
+        </div>
+
+        <div style="min-width: 150px;">
+          <label>Foreground color</label>
+          <input id="fg" type="color" value="#000000" />
+        </div>
+
+        <div style="min-width: 150px;">
+          <label>Background color</label>
+          <input id="bg" type="color" value="#ffffff" />
+        </div>
+      </div>
+
+      <fieldset style="margin-top: 1rem; border: 1px solid #e6e9ef; border-radius: 8px; padding: 1rem;">
+        <legend style="font-weight: 600; color: var(--muted)">Extra Padding (pixels)</legend>
+        <div class="padding-group">
+          <div>
+            <label for="padVertical">Top</label>
+            <input id="padVertical" type="number" min="0" max="500" value="20" />
+          </div>
+          <div>
+            <label for="padHorizontal">Horizontal Padding</label>
+            <input id="padHorizontal" type="number" min="0" max="500" value="20" />
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="preview" style="margin-top: 1rem;">
+        <div id="qr-wrapper" style="width: auto; height: auto;">
+          <div id="qrcode"></div>
+        </div>
+        <div style="flex: 1; min-width: 240px;">
+          <div class="center" style="justify-content: space-between">
+            <div style="font-weight: 600">Preview</div>
+            <div id="status" style="color: var(--muted); font-size: 0.9rem">
+              Waiting for QR library...
+            </div>
+          </div>
+          <div class="actions">
+            <button id="generate" class="secondary small">Generate</button>
+            <button id="download" class="secondary small">Download PNG</button>
+            <button id="copy" class="secondary small">Copy Link</button>
+            <button id="clear" class="secondary small">Clear</button>
+          </div>
+          <div
+            style="margin-top: 0.6rem; color: var(--muted); font-size: 0.9rem"
+          >
+            Tip: Use high error correction if you plan to style QR.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer style="text-align: center; font-size: 0.85rem; color: var(--muted); margin-top: 2rem;">
+      Made with ❤️ by Niraj • Works offline in any modern browser
+    </footer>
+
+  </div>
+
+  <!-- Load qr-code-styling library -->
+  <script src="https://cdn.jsdelivr.net/npm/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
+  <script src="./scripts/scripts.js"></script>
+</body>
+</html>
+
