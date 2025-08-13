@@ -155,6 +155,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     clearBtn.addEventListener("click", () => {
     dataInput.value = "";
+    qrcodeDiv.innerHTML = "";
     clearQRCode();
     });
 });
+
